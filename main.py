@@ -55,14 +55,14 @@ def update(x,y):
 
 
 def project_3d_to_2d(x, y, z, d):
-    # Calculate the angle of projection
-    theta = math.atan2(z, d)
+    if z == 0:
+        return 0, 0  # Avoid division by zero
+    
+    x_2d = x * d / z
+    y_2d = y * d / z
+    
+    return x_2d, y_2d
 
-    # Calculate the projected x and y coordinates
-    projected_x = x * math.cos(theta) - y * math.sin(theta)
-    projected_y = x * math.sin(theta) + y * math.cos(theta)
-
-    return projected_x, projected_y
 
 def Project_Polygon(polygon,d,cam):
     CamX = cam[0]
