@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import math
 import GetPolyData as poly
+import PolygonModifiers as PolyMove
 
 def is_point_visible(point):
     # Check if the point is behind the camera (negative z-coordinate)
@@ -114,9 +115,10 @@ phase = 0
 while True:
     phase +=1
     print(phase)
-    cam[2] = phase
+    #cam[2] = phase
     angle = (cam[3],cam[4])
     temp_polygons = polygons
+    temp_polygons = PolyMove.TransformPolygons(polygons,(0,0,phase))
     #temp_polygons = rotate_polygons(polygons,cam,angle)
 
     #Prject 3d to 2d
